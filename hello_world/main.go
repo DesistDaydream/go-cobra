@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "github.com/DesistDaydream/GoCobra/hello_world/cmd"
+import "github.com/DesistDaydream/go-cobra/hello_world/cmd"
 
 func main() {
 	cmd.Execute()
