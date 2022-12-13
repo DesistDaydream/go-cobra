@@ -10,19 +10,19 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// helloWorldCmd 封装
-func NewHelloWorldCmd() *cobra.Command {
-	// helloWorldCmd 表示 helloWorld 命令
-	helloWorldCmd := &cobra.Command{
-		Use:   "helloWorld",
+// versionCmd 封装
+func NewVersionCmd() *cobra.Command {
+	// versionCmd 表示 version 命令
+	versionCmd := &cobra.Command{
+		Use:   "version",
 		Short: "这个命令的简要描述",
 		Long:  `横跨多行的较长描述，可能包含示例和使用命令的用法。`,
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println("helloWorld called")
+			fmt.Println("version called")
 		},
 	}
 
-	return helloWorldCmd
+	return versionCmd
 }
 
 func init() {
