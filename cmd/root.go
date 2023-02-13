@@ -1,6 +1,5 @@
 /*
 Copyright © 2022 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
@@ -40,7 +39,8 @@ func newApp() *cobra.Command {
 当我运行程序时，会显示该描述内容
 	如果使用缩进，这行在界面展示时有缩进。`,
 		// 如果这个应用没有任何子命令，直接使用 go-cobra 执行的话，将会执行下面 Run 字段指定的函数
-		Run: rootRun,
+		Run:    rootRun,
+		PreRun: preRun,
 	}
 
 	// 我们可以在这里定义命令行 Flags 和 配置设置。
@@ -61,7 +61,8 @@ func newApp() *cobra.Command {
 	// 1. 使用 Prase() 函数，提前解析 Flags：
 	// rootCmd.PersistentFlags().Parse(os.Args)
 	// 2. 使用 OnInitialize() 函数，该函数会在 Command.Run 字段指定的函数执行前，先执行 initConfig 函数。
-	// 查看 Cobra 源码，OnInitialize() 中的 initializers 变量会在 preRun() 函数中被执行。
+	// 查看 Cobra 源码，OnInitialize() 会将其参数赋值给 initializers 变量，该会在 Command.preRun() 方法中被执行
+	// 注意：Command.preRun() 与 Command.PreRun() 不同。前者是 Command 结构体的方法，后者是 Command 的一个属性。
 	cobra.OnInitialize(initConfig)
 	// 假如我现在在这里执加了一行 config.NewConfig(rootFlags.CfgFile)，那么这个函数其实是会在 OnInitialize 函数执行之前执行的。
 	// config.NewConfig(rootFlags.CfgFile)
@@ -84,4 +85,8 @@ func initConfig() {
 func rootRun(cmd *cobra.Command, args []string) {
 	fmt.Println("主程序运行后执行的代码块。如果注销 Run，则运行主程序会显示上面Long上的信息")
 	fmt.Println("在 Run 字段指定的函数中，我们可以获取到 Flags 的值：", rootFlags.CfgFile)
+}
+
+func preRun(cmd *cobra.Command, args []string) {
+	initConfig()
 }
