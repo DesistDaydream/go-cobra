@@ -1,3 +1,7 @@
 username: DesistDaydream
 password: mypassword
+#
 test: "测试标志"
+manual-test: "手动绑定标志"
+level-one:
+  level-two: "第二级"
