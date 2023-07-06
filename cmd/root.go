@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 
+	flagcmd "github.com/DesistDaydream/go-cobra/cmd/flag"
 	vipercmd "github.com/DesistDaydream/go-cobra/cmd/viper"
 	"github.com/DesistDaydream/go-cobra/config"
 	"github.com/spf13/cobra"
@@ -72,6 +73,7 @@ func newApp() *cobra.Command {
 	rootCmd.AddCommand(
 		NewVersionCmd(),
 		vipercmd.NewViperCmd(),
+		flagcmd.NewFlagCmd(),
 	)
 
 	return rootCmd
