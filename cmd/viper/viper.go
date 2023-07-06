@@ -44,7 +44,7 @@ func initConfig() {
 
 	// 手动绑定配置文件中的 Key 与 Flags。与 BindPFlags 不同，BindPFlag 方法可以指定配置文件中的 Key 名与指定的 Flags 绑定。
 	viper.BindPFlag("manual-test", viperCmd.Flags().Lookup("test"))
-	// 带层级的 Key 绑定
+	// 带层级的 Key 绑定。只用标准的 . 符号引用 Key 即可。
 	viper.BindPFlag("level-one.level-two", viperCmd.Flags().Lookup("test"))
 }
 
