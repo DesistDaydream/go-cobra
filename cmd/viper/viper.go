@@ -39,6 +39,10 @@ func initConfig() {
 	// TODO: Viper 从各种地方读取配置的示例
 	// viper.AutomaticEnv() 读取匹配的环境变量
 
+	// TODO: mapstructure 功能示例
+	// https://github.com/spf13/viper?tab=readme-ov-file#unmarshaling
+	// strcut 中不加入 mapstructure tag 的话，unmarshal 后，struct 中部分类型（string 没事）的字段的值将会是空值
+
 	// 自动绑定配置文件中的 Key 与 Flags。BindPFlags 方法将 Flags 绑定到配置文件中，使用 Flags 的长名称作为配置文件中的 Key。
 	viper.BindPFlags(viperCmd.Flags())
 
